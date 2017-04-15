@@ -11,13 +11,20 @@ int main( int argc, char * argv )
 {
 	// Create a buffer for 1000 digits, feed the contents of Problem8.txt 
 	// into them.
-	FILE *numbers_file = fopen("Problem8.txt", "r");
+	FILE *numbers_file = fopen("digits.txt", "r");
 
-	int index = 0, max = 0;
-	char digits[1000], input;
+	if (!numbers_file) {
+		printf("Either the file's missing or it returned null for some\
+			reason.  either way, it's not open.");
+		exit(EXIT_FAILURE);
+	}
+
+	int index = 0, max = 0, digits[1000];
+	char input;
 
 	while ((input = fgetc(numbers_file)) != EOF) {
-		if (input != '\n' && index <= 1000) {
+		printf("%d\n", atoi(&input));
+		if (input != '\n' && index < 1000) {
 			digits[index] = atoi(&input);
 			index++;
 		}
@@ -26,23 +33,12 @@ int main( int argc, char * argv )
 	index = 0;
 	while (index + 12 <= 1000) {
 		unsigned long long int cur = 1;
-		for (int i = index; (i + 12) <= 1000; i++) {
+		for (int i = index; i <= (index + 12); i++) {
 			cur *= digits[i];
 		}
 
-		printf("Product of ");
-		
-		for (int i = 0; i < 13; i++) {
-			printf("%d ", digits[index + i]);
-		}
-		
-		if (cur > max) {
+		if (cur > max)
 			max = cur;
-			printf(" *MAX*");
-		}
-
-		printf("\n");
-
 
 		index++;
 	}
