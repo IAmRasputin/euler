@@ -1,8 +1,7 @@
 all: digits.c
 	gcc -c digits.c
-	gcc -o digits digits.o
+	gcc -o solution8 digits.o
 	rm digits.o
 
 clean:
-	rm -f digits
-	rm -f digits.o
+	rm -f solution8 

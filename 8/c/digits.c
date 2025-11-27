@@ -5,45 +5,42 @@
  * Digits located in Problem8.txt
  */
 #include <stdio.h>
-#include <stdlib.h>
 
-int main( int argc, char * argv )
-{
-	// Create a buffer for 1000 digits, feed the contents of digits.txt 
-	// into them.
+int main() {
 	FILE *numbers_file = fopen("digits.txt", "r");
-	int input; 
 	unsigned int index = 0, digits[1000];
-	unsigned long long max = 0;
-
+	int read;
 
 	if (!numbers_file) {
-		exit(EXIT_FAILURE);
+		return 1;
 	}
 
-	while ((input = fgetc(numbers_file)) != EOF) {
-		if (input != '\n' && index < 1000) {
-			digits[index] = atoi((const char *) &input);
+	while ((read = fgetc(numbers_file)) != EOF) {
+		if (read != '\n') {
+			digits[index] = read - '0';
 			index++;
 		}
 	}
 
-	index = 0;
-	while (index + 12 <= 1000) {
-		unsigned long long cur = 1;
-
-		for (int i = index; i <= (index + 12); i++) {
-			cur *= digits[i];
-		}
-
-		if (cur > max) {
-			max = cur;
-		}
-
-		index++;
-	}
-
 	fclose(numbers_file);
 
-	printf("%llu\n", max);
+	long max = 0;
+	int i = 0;
+
+	while (i+12 < 1000) {
+		long product = digits[i];
+		for (int x = i+1; x <= i+12; x++) {
+			product *= digits[x];
+		}
+
+		if (max < product) {
+			max = product;
+		}
+
+		i++;
+	}
+
+	printf("%ld\n", max);
+
+	return 0;
 }
