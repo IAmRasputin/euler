@@ -1,20 +1,29 @@
 #include <stdio.h>
 
-int main()
-{
-	int sumSquares;
-	int squareSums;
-	int diff;
-	int i;
+int sum_of_squares(int max) {
+	int acc = 0;
 
-	for( i = 1; i <= 100; i++ ){
-		sumSquares += (i * i);
-		squareSums += i;
+	for (int i = 1; i <= max; i++) {
+		acc += (i * i);
 	}
 
-	diff = (squareSums * squareSums) - sumSquares;
+	return acc;
+}
 
-	printf("%d\n", diff);
+int square_of_sum(int max) {
+	int acc = 0;
+
+	for (int i = 1; i <= max; i++) {
+		acc += i;
+	}
+
+	return acc * acc;
+}
+
+int main() {
+	int result = square_of_sum(100) - sum_of_squares(100);
+
+	printf("%d\n", result);
 
 	return 0;
 }
