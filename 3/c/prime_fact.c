@@ -1,37 +1,23 @@
 #include <stdio.h>
 #include <math.h>
-
-int isPrime(int number)
-{
-	int i = 2;
-	int result = 1;
-
-	for (; i <= sqrt((double)number); i++){
-		if ( number % i == 0 ){
-			result = 0;
-		}
-	}
-
-	return result;
-}
+#include "../../util/primes.h"
 
 int main()
 {
-	long int num = 600851475143;	
+	long int num = 600851475143;
 
-	int i = 3;
+	long int max_possible = ceil(sqrt(num));
 
-	int cur = 0;
+	if (max_possible % 2 == 0) {
+		max_possible--;
+	}
 
-	for( ; i <= sqrt((double)num) ; i++ ){
-		if (isPrime(i)){
-			if (num % i == 0){
-				cur = i;
-			}
+	for (int i = max_possible; i > 1; i-=2) {
+		if (num % i == 0 && is_prime(i)) {
+			printf("%d\n", i);
+			return 0;
 		}
 	}
 
-	printf("%d\n", cur);
-	
-	return 0;
+	return 1;
 }
