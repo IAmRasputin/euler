@@ -1,7 +1,7 @@
 all: fib
 
 fib:
-	gcc fib.c -o fib
+	gcc fib.c -o solution2
 
 clean:
-	rm fib
+	rm solution2

@@ -1,5 +1,5 @@
 palindrome:
-	gcc palindrome.c -g -lm -o palindrome 
+	gcc palindrome.c -g -lm -o solution4
 
 clean:
-	rm palindrome
+	rm solution4

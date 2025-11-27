@@ -1,5 +1,5 @@
 multiples:
-	gcc multiples.c -o multiples
+	gcc multiples.c -o solution1
 
 clean:
-	rm multiples
+	rm solution1
