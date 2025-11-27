@@ -1,25 +1,25 @@
 #include <stdio.h>
 
-int main()
-{
-	int i;
-	int answer;
-	int found = 0;
-	int cur = 20;
-
-	while( !found ){
-		cur++;
-		found = 1;
-		for( i = 1; i <= 20; i++ ){
-			if( ( cur % i ) != 0 ){
-				found = 0;
-				break;
-			}
+int multiple_of_all(int num) {
+	int candidates[10] = {20, 19, 18, 17, 16, 15, 14, 13, 12, 11};
+	
+	for (int i = 0; i < 10; i++) {
+		if (num % candidates[i] != 0) {
+			return 0;
 		}
-		
 	}
 
-	printf("%d\n", cur);
-	
+	return 1;
+}
+
+int main() {
+	int num = 20;
+
+	while (!multiple_of_all(num)) {
+		num += 20;
+	}
+
+	printf("%d\n", num);
+
 	return 0;
 }
