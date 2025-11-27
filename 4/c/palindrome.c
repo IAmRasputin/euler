@@ -1,44 +1,44 @@
 #include <stdio.h>
-#include <string.h>
 
-int isPalindrome(int num)
-{
-	int len = 0;
-	int isPalindrome = 1;
-	int i;
-
-	char out[512];
-	sprintf( out, "%d", num ); // Write the integer to a characrer array
+int is_palindrome(long num) {
+	char num_str[64];
+	sprintf(num_str, "%ld", num);
 	
-	len = strlen( out );
+	int end_ptr = 0;
 
-	for( i = 0; i < len; i++ ){
-		if( out[i] != out[len - (i + 1)] ){
-			isPalindrome = 0;
-			break;
-		}
+	while (end_ptr < 64 && num_str[end_ptr] != '\0') {
+		end_ptr++;
 	}
 
-	return isPalindrome;
+	end_ptr--;
+
+	int start_ptr = 0;
+
+	while (start_ptr < end_ptr) {
+		if (num_str[start_ptr] != num_str[end_ptr]) {
+			return 0;
+		}
+
+		start_ptr++;
+		end_ptr--;
+	}
+
+	return 1;
 }
 
-int main()
-{
-	int num1 = 999, num2, largest = 0, current;
+int main() {
+	long max = 0;
 
-	for( ; num1 >= 100; num1-- ){
-		for( num2 = num1; num2 >= 100; num2-- ){
-			current = num1 * num2;
-			if( isPalindrome( current ) ){
-				if( current > largest ){
-					largest = current;
-				}
+	for (int x = 100; x <= 999; x++) {
+		for (int y = 100; y <= 999; y++) {
+			long cur = x * y;
+
+			if (is_palindrome(cur) && max < cur) {
+				max = cur;
 			}
 		}
 	}
 
-	printf( "%d\n", largest );
-	
-	return 0;
+	printf("%ld\n", max);
 }
 					
