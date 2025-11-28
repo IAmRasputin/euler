@@ -1,5 +1,5 @@
-C_FILES=*.c ../../util/primes.c
-LD_OPTS=-lm -I./../../util
+C_FILES=*.c ../util/primes.c
+LD_OPTS=-lm -I./../util
 
 all:
 	gcc -c ${C_FILES}

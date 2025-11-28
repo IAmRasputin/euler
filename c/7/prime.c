@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "../../util/primes.h"
+#include "../util/primes.h"
 
 int main()
 {
