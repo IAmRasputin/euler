@@ -12,7 +12,11 @@ int is_prime(int num) {
 	
 	double limit = sqrt(num);
 
-	int to_check = 3;
+	int to_check = 2;
+	if (num % to_check == 0) {
+		return 0;
+	}
+	to_check++;
 
 	while (to_check <= limit) {
 		if (num % to_check == 0) {

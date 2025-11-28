@@ -1,8 +1,7 @@
-triplet:
+triplet: triplet.c
 	gcc -c triplet.c
-	gcc -o triplet triplet.o
+	gcc -o solution9 triplet.o
 	rm triplet.o
 
 clean:
-	rm -f triplet
-	rm -f triplet.o
+	rm -f solution9 

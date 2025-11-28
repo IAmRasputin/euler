@@ -12,7 +12,7 @@ int main(void)
 {
 	int a = 1, b = 2, c = 3;
 
-	while (a + b + c != 1000 || !is_triplet(a, b, c)) {
+	while (a + b + c <= 1000 || !is_triplet(a, b, c)) {
 		if (++a >= b) {
 			a = 1;
 			if (++b >= c) {
@@ -22,7 +22,7 @@ int main(void)
 		}
 	}
 
-	printf("%llu\n", a * b * c);
+	printf("%d\n", a * b * c);
 
 	return 0;
 }
